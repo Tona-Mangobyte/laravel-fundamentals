@@ -4,7 +4,15 @@ namespace App\Services;
 
 class UserService
 {
+    public function __construct(
+        private readonly SimpleAppService $appService,
+    )
+    {
+    }
+
     public function findAll() {
-        return "Get all users";
+        $simpleService = $this->appService->container->get(SimpleService::class);
+        // return "Get all users";
+        return $simpleService->say();
     }
 }

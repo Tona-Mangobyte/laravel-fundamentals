@@ -12,4 +12,8 @@ class SimpleService
         // return "Hello World!";
         return $this->userService->findAll();
     }
+
+    public function say() {
+        return "Hi, Tona";
+    }
 }
