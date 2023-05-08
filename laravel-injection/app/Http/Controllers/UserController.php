@@ -20,13 +20,13 @@ class UserController extends Controller
         return $this->simpleService->sayHello();
     }
 
-    public function report(Request $request) {
+    public function report($id, Request $request) {
         /*$report = App::call([new UserReport, 'generate']);
         return $report;*/
 
         $called = App::make(UserReport::class);
         $func = [$called, 'generate'];
-        $report = $func($this->userService, $request);
+        $report = $func($this->userService, $request, $id);
         return $report;
     }
 }

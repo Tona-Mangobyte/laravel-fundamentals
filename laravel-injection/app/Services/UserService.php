@@ -18,8 +18,9 @@ class UserService
         return $simpleService->say();
     }
 
-    public function invoice(Request $request):array {
+    public function invoice(Request $request, $id):array {
         return [
+            'var_id' => $id,
             'id' => $request->get('id'),
             'name' => 'Tona'];
     }

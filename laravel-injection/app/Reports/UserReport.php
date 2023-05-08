@@ -10,8 +10,8 @@ class UserReport
     /**
      * Generate a new user report.
      */
-    public function generate(UserService $userService, Request $request): array
+    public function generate(UserService $userService, Request $request, $id = null): array
     {
-        return $userService->invoice($request);
+        return $userService->invoice($request, $id);
     }
 }
