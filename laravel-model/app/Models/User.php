@@ -41,4 +41,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /*public function simple() {
+        $this->find(1);
+        self::query()::find(1);
+        self::query()::firstWhere(1);
+        $q = self::query()::newQuery();
+        $q->explain()->dd();
+    }*/
 }
