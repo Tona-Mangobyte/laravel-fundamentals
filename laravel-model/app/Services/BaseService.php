@@ -1,29 +1,47 @@
 <?php
 
-namespace app\Services;
+namespace App\Services;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model as Entity;
 
 abstract class BaseService
 {
-    public function __construct(public Model $model){}
+    public function __construct(public Entity $entity){}
+
+    public function newEntityQuery() {
+        return $this->entity->newModelQuery();
+    }
+    public function newQuery(): Builder
+    {
+        return $this->entity->newQuery();
+    }
+
+    public function newQueryWithoutRelationships() {
+        return $this->entity->newQueryWithoutRelationships();
+    }
 
     public function where($column, $operator = null, $value = null, $boolean = 'and') {
-        return $this->model->where($column, $operator, $value, $boolean);
+        return $this->entity->where($column, $operator, $value, $boolean);
     }
 
     public function getAll() {
-        return $this->model->all();
+        return $this->entity->all();
     }
     public function getOne($id) {
-        return $this->model->find($id);
+        return $this->entity->find($id);
     }
     public function createOrUpdate($args) {
-        $this->model->fill($args)->save();
-        return $this->model;
+        $this->entity->fill($args)->save();
+        return $this->entity;
     }
     public function delete($id) {
-        $model = $this->model->find($id);
-        return $model->delete();
+        $entity = $this->entity->find($id);
+        return $entity->delete();
+    }
+
+    public function cloneQueryBuilder(): Builder
+    {
+        return $this->entity->newQuery()->clone();
     }
 }
