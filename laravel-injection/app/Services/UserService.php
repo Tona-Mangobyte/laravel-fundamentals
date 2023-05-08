@@ -2,6 +2,8 @@
 
 namespace App\Services;
 
+use Illuminate\Http\Request;
+
 class UserService
 {
     public function __construct(
@@ -16,7 +18,9 @@ class UserService
         return $simpleService->say();
     }
 
-    public function invoice():array {
-        return ['id' => 1, 'name' => 'Tona'];
+    public function invoice(Request $request):array {
+        return [
+            'id' => $request->get('id'),
+            'name' => 'Tona'];
     }
 }
