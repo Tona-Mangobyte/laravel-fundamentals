@@ -15,4 +15,8 @@ class UserService
         // return "Get all users";
         return $simpleService->say();
     }
+
+    public function invoice():array {
+        return ['id' => 1, 'name' => 'Tona'];
+    }
 }
