@@ -6,16 +6,20 @@ use Illuminate\Http\Request;
 
 class UserService
 {
+    protected $simpleService;
     public function __construct(
         private readonly SimpleAppService $appService,
     )
     {
+        // $this->simpleService = app(SimpleService::class)->get(SimpleService::class);
+        // $this->simpleService = $appService->container->get(SimpleService::class);
     }
 
     public function findAll() {
-        $simpleService = $this->appService->container->get(SimpleService::class);
         // return "Get all users";
-        return $simpleService->say();
+        /*$simpleService = $this->appService->container->get(SimpleService::class);
+        return $simpleService->say();*/
+        return app(SimpleService::class)->say();
     }
 
     public function invoice(Request $request, $id):array {
