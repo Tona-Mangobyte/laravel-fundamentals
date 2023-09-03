@@ -1,6 +1,5 @@
 <?php
 
-use App\Events\WebsocketDemoEvent;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,11 +14,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-
-    broadcast(new WebsocketDemoEvent(['message' => 'Hello ws']));
-    event(new WebsocketDemoEvent(['message' => 'Hello ws']));
-
     return view('welcome');
 });
-
-Route::post('/messages', 'ChatsController@sendMessage');
