@@ -11,4 +11,12 @@ class SimpleController extends Controller
         $users = ['Tona', 'Simple'];
         return view('simple', ['users' => $users]);
     }
+
+    public function userList() {
+        $users = [
+            0 => ['id' => 1, 'name' => "Tona", 'email' => 'tona@mb.com'],
+            1 => ['id' => 2, 'name' => "Admin", 'email' => 'admin@mb.com'],
+        ];
+        return view('user', ['users' => $users]);
+    }
 }

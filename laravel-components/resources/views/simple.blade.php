@@ -1,10 +1,21 @@
-<script src="/livewire/livewire.js"></script>
+<html>
+<head>
+    @livewireStyles
+</head>
+<body>
 <div>
-    <?php foreach ($users as $user): ?>
-    Hello, <?php echo $user; ?> <br />
-    <?php endforeach; ?>
+    @foreach($users as $user)
+        Hello, {{ $user  }} <br/>
+    @endforeach
 
     <br/>
     {{--@livewire('search-users')--}}
-    @livewire('counter')
+    {{--@livewire('counter')--}}
+    <livewire:counter msg="Hello Components"/>
+
+    <livewire:simple />
 </div>
+
+@livewireScripts
+</body>
+</html>

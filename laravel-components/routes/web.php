@@ -19,3 +19,4 @@ Route::get('/', function () {
 });
 
 Route::get('/simple', [SimpleController::class, 'index']);
+Route::get('/users', [SimpleController::class, 'userList']);
