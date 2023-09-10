@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -49,4 +50,9 @@ class User extends Authenticatable
         $q = self::query()::newQuery();
         $q->explain()->dd();
     }*/
+
+    public function country() {
+        // return $this->hasOne(Country::class, 'id', 'country_id');
+        return $this->belongsTo(Country::class, 'country_id');
+    }
 }
